@@ -1,4 +1,4 @@
-# Check your object usage in your app! #
+# Check your object usage in your app!
 
 Migrating App from RESt to GraphQL and wanted to prune the REST api's objects to take advantage of graphQL.
 
@@ -22,11 +22,8 @@ export default function higherOrderComponent(WrappedComponent) {
 }
 ```
 
-
 WIP ~~
 
-
 TODO:
- - run on live application to collect real user usage?
- - tests
- - friendlier api
+
+- Run on portal in live application that reads off window
