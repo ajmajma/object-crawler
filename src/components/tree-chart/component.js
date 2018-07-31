@@ -4,19 +4,6 @@ import PropTypes from "prop-types";
 import { findDOMNode } from "react-dom";
 import { tree } from "d3-state-visualizer";
 
-const appState = {
-  todoStore: {
-    todos: [
-      { title: "d3" },
-      { title: "state" },
-      { title: "visualizer" },
-      { title: "tree" }
-    ],
-    completedCount: 1,
-    alphabeticalOrder: true
-  }
-};
-
 class TreeChart extends Component {
   static propTypes = {
     state: PropTypes.object,
@@ -71,7 +58,7 @@ class TreeChart extends Component {
 
   componentDidMount() {
     this.renderChart = tree(findDOMNode(this), {
-      state: appState,
+      state: this.props.tree,
       id: "treeExample",
       size: 1000,
       aspectRatio: 0.5,
@@ -81,11 +68,13 @@ class TreeChart extends Component {
       style: { border: "1px solid black" },
       tooltipOptions: { offset: { left: 30, top: 10 }, indentationSize: 2 }
     });
+
     this.renderChart();
   }
 
+  // TODO: fix or change, this would normally handle updates
   componentWillReceiveProps(nextProps) {
-    this.renderChart(nextProps.tree || nextProps.state);
+    this.renderChart();
   }
 
   render() {
